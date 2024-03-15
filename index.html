@@ -19,12 +19,23 @@
          redirect_uri: 'https://osmaav.github.io/YandexOauth/'
       },
       // 'https://osmaav.github.io/YandexOauth/'
-       )
-       .then(({
-          handler
-       }) => handler())
-       .then(data => {document.getElementsById('token')[0].outerhtml=`<h1>Token ${data}</h1>`})
-       .catch(error => console.warn('Ошибка', error));
+       ).then(function(result) {
+               return result.handler()
+            })
+      
+          .then(function(data) {
+               console.log('Сообщение с токеном: ', data);
+               document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data)}`;
+            })
+            .catch(function(error) {
+               console.warn('Что-то пошло не так: ', error);
+               document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(error)}`;
+            });
+         // .then(({
+          // handler
+       // }) => handler())
+       // .then(data => {document.getElementsById('token')[0].outerhtml=`<h1>Token ${data}</h1>`})
+       // .catch(error => console.warn('Ошибка', error));
       }
       
     </script>
