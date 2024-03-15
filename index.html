@@ -18,21 +18,19 @@
          response_type: 'token',
          redirect_uri: 'https://osmaav.github.io/YandexOauth/'
       },
-      'https://osmaav.github.io/YandexOauth/'
+      // 'https://osmaav.github.io/YandexOauth/'
        )
        .then(({
           handler
        }) => handler())
-       .then(data => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Token ${data}</h1>`)
-       .catch(error => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Ошибка ${error}</h1>`);
+       .then(data => {document.getElementsById('token')[0].outerhtml=`<h1>Token ${data}</h1>`})
+       .catch(error => console.warn('Ошибка', error));
       }
       
     </script>
-    <h1>Oauth test</h1>
+    <h1 id="token">Oauth test</h1>
     <div class="button-container">
-      <a id="oauth" class="button" onClick ='auth()'>Set</a>
-<!--       <a id="copy" class="button">Copy</a> -->
-<!--       <a id="delete" class="button">Delete</a> -->
+      <a id="oauth" class="button" onClick ='auth()'>Войти</a>
     </div>
   </body>
 </html>
