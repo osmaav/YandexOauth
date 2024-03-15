@@ -11,7 +11,8 @@
   <body>
     <script>
       const OATUH_APP_ID = '4d583690e1214c4581e492a653213c59';
-      YaAuthSuggest.init(
+      function auth(){
+        YaAuthSuggest.init(
       {
          client_id: OATUH_APP_ID,
          response_type: 'token',
@@ -24,12 +25,14 @@
        }) => handler())
        .then(data => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Token ${data}</h1>`)
        .catch(error => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Ошибка ${error}</h1>`);
+      }
+      
     </script>
     <h1>Oauth test</h1>
     <div class="button-container">
-      <a id="oauth" class="button">Set</a>
-      <a id="copy" class="button">Copy</a>
-      <a id="delete" class="button">Delete</a>
+      <a id="oauth" class="button" onClick ='auth()'>Set</a>
+<!--       <a id="copy" class="button">Copy</a> -->
+<!--       <a id="delete" class="button">Delete</a> -->
     </div>
   </body>
 </html>
