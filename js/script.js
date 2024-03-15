@@ -6,15 +6,7 @@ const OATUH_APP_ID = '4d583690e1214c4581e492a653213c59';
          response_type: 'token',
          redirect_uri: 'https://osmaav.github.io/YandexOauth/'
       },
-      'https://osmaav.github.io/YandexOauth/', 
-        {
-            view: 'button',
-            parentId: 'container',
-            buttonView: 'main',
-            buttonTheme: 'light',
-            buttonSize: 'm',
-            buttonBorderRadius: 0
-         }
+      'https://osmaav.github.io/YandexOauth/'
        ).then(function(result) {
                return result.handler()
             })
