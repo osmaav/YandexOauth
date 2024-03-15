@@ -11,7 +11,6 @@
   <body>
     <script>
       const OATUH_APP_ID = '4d583690e1214c4581e492a653213c59';
-
       YaAuthSuggest.init(
       {
          client_id: OATUH_APP_ID,
@@ -19,12 +18,12 @@
          redirect_uri: 'https://osmaav.github.com/YandexOauth'
       },
       'https://osmaav.github.com/YandexOauth'
-   )
-   .then(({
-      handler
-   }) => handler())
-   .then(data => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Token ${data}</h1>`)
-   .catch(error => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Ошибка ${error}</h1>`;
+       )
+       .then(({
+          handler
+       }) => handler())
+       .then(data => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Token ${data}</h1>`)
+       .catch(error => document.getElementsByTagName('h1')[0].outerhtml=`<h1>Ошибка ${error}</h1>`);
     </script>
     <h1>Oauth test</h1>
     <div class="button-container">
