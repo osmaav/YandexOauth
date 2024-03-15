@@ -1,4 +1,4 @@
-const OATUH_APP_ID = '23cabbbdc6cd418abb4b39c32c41195d';
+const OATUH_APP_ID = '4d583690e1214c4581e492a653213c59';
 
 const TOKEN_KEY = 'yandex-music-token';
 
