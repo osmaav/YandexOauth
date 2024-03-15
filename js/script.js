@@ -19,7 +19,7 @@ const clearStorage = () => {
 
 // entry point for background.js
 const requestAuth = () => {
-  chrome.runtime.sendMessage(REQUEST_PAYLOAD);
+  browser.runtime.sendMessage(REQUEST_PAYLOAD);
 };
 
 
