@@ -12,12 +12,12 @@ const OATUH_APP_ID = '4d583690e1214c4581e492a653213c59';
             })
       
           .then(function(data) {
-               console.log('Сообщение с токеном: ', data);
-               document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data)}`;
+               // console.log('Сообщение с токеном: ', data);
+               document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data,null,2)}`;
             })
             .catch(function(error) {
-               console.warn('Что-то пошло не так: ', error);
-               document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(error)}`;
+               // console.warn('Что-то пошло не так: ', error);
+               document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(error,null,2)}`;
             });
          // .then(({
           // handler
