@@ -1,55 +1,27 @@
-const TOKEN_KEY = 'yandex-token';
-const REQUEST_PAYLOAD = { action: 'open_oauth'};
-const PROPFIND ={
-  PROPFIND: '/ HTTP/1.1',
-  Host: 'webdav.yandex.ru',
-  Accept: '*/*',
-  Depth: 1,
-  Authorization: 'OAuth ' + '4d583690e1214c4581e492a653213c59'
-};
-
-
-// copy input data to buffer
-const copyTextToClipboard = (text) => {
-  // ?
-  if (!navigator.clipboard) {
-    return false;
-  }
-  navigator.clipboard.writeText(text);
-  return true;
-}
-
-// clear TOKEN_KEY
-const clearStorage = () => {
-  localStorage.setItem(TOKEN_KEY, null);
-  window.close();
-}
-
-// entry point for background.js
-const requestAuth = () => {
-  browser.runtime.sendMessage(REQUEST_PAYLOAD);
-};
-
-
-const processToken = (token) => {
-  if (!token) {
-    // console.log(1);
-  }
-  document.getElementById('oauth').addEventListener('click', () => requestAuth());
-  document.getElementById('delete').addEventListener('click', () => clearStorage());
-  document.getElementById('copy').addEventListener('click', () => copyTextToClipboard(token));
-}
-
-// Call getToken and after processToken with output from getToken
-const getToken = (callback) => {
-  // getiing data from storage by TOKEN_KEY
-  localStorage.getItem(TOKEN_KEY)
-}
-
-// Call processToken with output from getToken
-const onLoad = () => {
-  getToken(processToken);
-}
-
-// entry point
-onLoad();
+const OATUH_APP_ID = '4d583690e1214c4581e492a653213c59';
+      function auth(){
+        YaAuthSuggest.init(
+      {
+         client_id: OATUH_APP_ID,
+         response_type: 'token',
+         redirect_uri: 'https://osmaav.github.io/YandexOauth/'
+      },
+      // 'https://osmaav.github.io/YandexOauth/'
+       ).then(function(result) {
+               return result.handler()
+            })
+      
+          .then(function(data) {
+               console.log('Сообщение с токеном: ', data);
+               document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data)}`;
+            })
+            .catch(function(error) {
+               console.warn('Что-то пошло не так: ', error);
+               document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(error)}`;
+            });
+         // .then(({
+          // handler
+       // }) => handler())
+       // .then(data => {document.getElementsById('token')[0].outerhtml=`<h1>Token ${data}</h1>`})
+       // .catch(error => console.warn('Ошибка', error));
+      }
