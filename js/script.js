@@ -1,5 +1,13 @@
 const TOKEN_KEY = 'yandex-token';
 const REQUEST_PAYLOAD = { action: 'open_oauth'};
+const PROPFIND ={
+  PROPFIND: '/ HTTP/1.1',
+  Host: 'webdav.yandex.ru',
+  Accept: '*/*',
+  Depth: 1,
+  Authorization: 'OAuth ' + '4d583690e1214c4581e492a653213c59'
+};
+
 
 // copy input data to buffer
 const copyTextToClipboard = (text) => {
